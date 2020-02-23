@@ -55,16 +55,26 @@ $(function () {
 
     fetchBooks();
 
+    // do funkcji przekazujemy result tablicę obiektów
     function readBooks(books){
         books.forEach(function (element) {
-            var title = $("<div>").text(element.title);
+            var title = $("<div class='cos'>").text(element.title);
             // utworzenie nowego diva
-            var newDiv = $("<div>");
+            var newDiv = $("<div class='opis' style='display: none'>").text("tekst");
             // dodanie tytułu
             newDiv.appendTo(title);
             container.append(title);
         })
     }
+
+    // ========= ZADANIE 4 =============
+
+    container.on("click",".cos",function () {
+        $(this).find(".opis").toggle();
+    });
+
+
+
 
 });
 
