@@ -37,7 +37,34 @@ $(function () {
     //     starWarsContainer.append(name,height);
     // }
 
-    // ========= Testowanie API GET =============
+    // ========= ZADANIE 3 =============
+
+    var container = $(".title");
+    var BOOKS_API = "http://localhost:8282";
+
+    function fetchBooks(){
+        $.ajax({
+            url: BOOKS_API + "/books",
+            type: "GET"
+            // result zwraca tablice obiektów
+        }).done(function (result) {
+
+            readBooks(result);
+        })
+    }
+
+    fetchBooks();
+
+    function readBooks(books){
+        books.forEach(function (element) {
+            var title = $("<div>").text(element.title);
+            // utworzenie nowego diva
+            var newDiv = $("<div>");
+            // dodanie tytułu
+            newDiv.appendTo(title);
+            container.append(title);
+        })
+    }
 
 });
 
